@@ -1,0 +1,14 @@
+{
+  "name": "apiarmariosnodejs",
+  "version": "1.0.0",
+  "description": "sistema para os armários do cimol",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
