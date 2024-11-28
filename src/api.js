@@ -16,7 +16,6 @@ app.use('/', router.get('/', (req, res) => {
 
 const armarioController = require('./controllers/armarioController');
 const alocacaoController = require('./controllers/alocacaoController.js');
-const alunoController = require('./controllers/alunoController.js');
 const usuarioController = require('./controllers/usuarioController');
 
 app.use('/registrar', router.post('/registrar', usuarioController.registrar));
@@ -30,12 +29,7 @@ app.use('/editararmario/:id', router.put('/editararmario/:id', armarioController
 app.use('/deletararmario/:id', router.delete('/deletararmario/:id', armarioController.removerArmario));
 
 app.use('/alocar', router.post('/alocar', alocacaoController.alocarArmario));
-app.use('/alocacao/aluno/:idAluno', router.get('/alocacao/aluno/:idAluno', alocacaoController.buscarAlocacoesPorAluno));
+app.use('/alocacao/id/:idArmario', router.get('/alocacao/id/:idArmario', alocacaoController.buscarAlocacoesPorAluno));
 app.use('/alocacao/:id', router.delete('/alocacao/:id', alocacaoController.desalocarArmario));
-
-app.use('/registraraluno', router.post('/registraraluno', alunoController.cadastrarAluno));
-app.use('/alunos', router.get('/alunos', alunoController.listarAlunos));
-app.use('/aluno/:id', router.get('/aluno/:id', alunoController.listarAlunoPorId));
-app.use('/editaraluno/:id', router.put('/editaraluno/:id', alunoController.editarAluno));
 
 module.exports = app;

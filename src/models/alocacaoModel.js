@@ -1,39 +1,78 @@
 const db = require('./db');
 
-exports.alocarArmario = async (alunoId, armarioId, dataInicio, dataValidade) => {
-    const sql = `
-        INSERT INTO alocacao (data_inicio, data_validade, aluno_idAluno, armario_idArmario)
-        VALUES (?, ?, ?, ?)
+exports.alocarArmario = async (armarioId, dataInicio, dataValidade, nomeAluno, turmaAluno) => {
+    const sqlAlocacao = `
+        INSERT INTO alocacao (data_inicio, data_validade, armario_idArmario, nome_aluno, turma_aluno)
+        VALUES (?, ?, ?, ?, ?)
+    `;
+    const sqlAtualizarStatus = `
+        UPDATE armario SET status = 'ocupado' WHERE idArmario = ?
     `;
     return new Promise((resolve, reject) => {
-        db.query(sql, [dataInicio, dataValidade, alunoId, armarioId], (err) => {
+        db.beginTransaction((err) => {
             if (err) return reject(err);
-            resolve('Armário alocado com sucesso');
-        });
-    });
-};
 
-exports.buscarAlocacoesPorAluno = async (idAluno) => {
-    const sql = `
-        SELECT a.idAlocacao, a.data_inicio, a.data_validade, ar.numero AS armario_numero, ar.local AS armario_local
-        FROM alocacao a
-        JOIN armario ar ON a.armario_idArmario = ar.idArmario
-        WHERE a.aluno_idAluno = ?
-    `;
-    return new Promise((resolve, reject) => {
-        db.query(sql, [idAluno], (err, results) => {
-            if (err) return reject(err);
-            resolve(results);
+            db.query(sqlAlocacao, [dataInicio, dataValidade, armarioId, nomeAluno, turmaAluno], (err) => {
+                if (err) {
+                    return db.rollback(() => {
+                        reject(err);
+                    });
+                }
+
+                db.query(sqlAtualizarStatus, [armarioId], (err) => {
+                    if (err) {
+                        return db.rollback(() => {
+                            reject(err);
+                        });
+                    }
+
+                    db.commit((err) => {
+                        if (err) {
+                            return db.rollback(() => {
+                                reject(err);
+                            });
+                        }
+                        resolve('Armário alocado com sucesso e status atualizado para ocupado');
+                    });
+                });
+            });
         });
     });
 };
 
 exports.desalocarArmario = async (id) => {
-    const sql = 'DELETE FROM alocacao WHERE idAlocacao = ?';
+    const sqlDesalocacao = 'DELETE FROM alocacao WHERE idAlocacao = ?';
+    const sqlAtualizarStatus = `
+        UPDATE armario SET status = 'disponível' WHERE idArmario = ?
+    `;
     return new Promise((resolve, reject) => {
-        db.query(sql, [id], (err) => {
+        db.beginTransaction((err) => {
             if (err) return reject(err);
-            resolve('Alocação removida com sucesso');
+
+            db.query(sqlAtualizarStatus, [id], (err) => {
+                if (err) {
+                    return db.rollback(() => {
+                        reject(err);
+                    });
+                }
+
+                db.query(sqlDesalocacao, [id], (err) => {
+                    if (err) {
+                        return db.rollback(() => {
+                            reject(err);
+                        });
+                    }
+
+                    db.commit((err) => {
+                        if (err) {
+                            return db.rollback(() => {
+                                reject(err);
+                            });
+                        }
+                        resolve('Alocação removida com sucesso e status do armário atualizado para disponível');
+                    });
+                });
+            });
         });
     });
 };
