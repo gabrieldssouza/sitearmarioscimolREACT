@@ -2,7 +2,7 @@ const alocacaoModel = require('../models/alocacaoModel');
 
 exports.alocarArmario = async (req, res) => {
     try {
-        const {armarioId, dataInicio, dataValidade, nomeAluno, turmaAluno } = req.body;
+        const { armarioId, dataInicio, dataValidade, nomeAluno, turmaAluno } = req.body;
         const result = await alocacaoModel.alocarArmario(armarioId, dataInicio, dataValidade, nomeAluno, turmaAluno);
         res.status(200).send(result);
     } catch (err) {
