@@ -11,7 +11,9 @@ exports.listarArmarios = async () => {
 };
 
 exports.listarArmariosPorLocal = async (local) => {
+
     const sql = "SELECT * FROM armario WHERE local = ?";
+
     return new Promise((resolve, reject) => {
         db.query(sql, [local], (err, results) => {
             if (err) return reject(err);
@@ -25,7 +27,9 @@ exports.listarArmarioPorId = async (id) => {
     return new Promise((resolve, reject) => {
         db.query(sql, [id], (err, results) => {
             if (err) return reject(err);
+
             resolve(results[0]);
+
         });
     });
 };

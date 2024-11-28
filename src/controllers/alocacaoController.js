@@ -31,6 +31,7 @@ exports.desalocarArmario = async (req, res) => {
         res.status(500).send('Erro ao desalocar armário');
         console.error(err);
     }
+
 };
 
 exports.editarLocacaoController = async (req, res) => {
@@ -46,4 +47,5 @@ exports.editarLocacaoController = async (req, res) => {
         res.status(500).send('Erro na edição do armário');
         console.error(err); 
     }
+
 };

@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a2e;
+    color: white;
+  }
+  
+  .locker-details-container {
+    background-color: #24243e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .locker-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .locker-details-header h2 {
+    font-size: 1.5em;
+    margin: 0;
+  }
+  
+  .locker-details-actions button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .edit-button {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+  }
+  
+  .clear-button {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+  }
+  
+  .save-button {
+    background-color: #22c55e;
+    color: white;
+    border: none;
+  }
+  
+  .locker-details-content p {
+    margin: 10px 0;
+  }
+  
+  .usage-history {
+    margin: 10px 0 20px;
+    padding-left: 20px;
+    list-style-type: disc;
+  }
+  
+  .locker-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .status-indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+  }
+  
+  .status-indicator.green {
+    background-color: #22c55e;
+  }
+  
+  .status-indicator.blue {
+    background-color: #3b82f6;
+  }
+  
+  .status-indicator.yellow {
+    background-color: #facc15;
+  }
+  
+  .status-indicator.red {
+    background-color: #ef4444;
+  }
+  
+  .status-legend {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .status-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  

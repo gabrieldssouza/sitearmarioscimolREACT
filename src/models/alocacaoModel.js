@@ -75,6 +75,7 @@ exports.desalocarArmario = async (id) => {
             });
         });
     });
+
 };
 
 exports.buscarAlocacoesPorAluno = async (idArmario) => {
@@ -96,3 +97,4 @@ exports.editarLocacao = async (armarioId, nomeAluno, turmaAluno, dataInicio, dat
         });
     });
 };
+

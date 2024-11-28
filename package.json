@@ -9,6 +9,7 @@
     "build": "next build",
     "start": "node ./bin/server.js",
     "lint": "next lint",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
