@@ -1,39 +1,41 @@
 const db = require('./db');
 
 exports.alocarArmario = async (armarioId, dataInicio, dataValidade, nomeAluno, turmaAluno) => {
-    const sql = `
+    const sqlAlocacao = `
         INSERT INTO alocacao (data_inicio, data_validade, armario_idArmario, nome_aluno, turma_aluno)
         VALUES (?, ?, ?, ?, ?)
     `;
-    return new Promise((resolve, reject) => {
-        db.query(sql, [dataInicio, dataValidade, armarioId, nomeAluno, turmaAluno], (err) => {
-            if (err) return reject(err);
-            resolve('Armário alocado com sucesso');
-        });
-    });
-};
-
-exports.buscarAlocacoesPorAluno = async (idArmario) => {
-    const sql = `
-        SELECT a.idAlocacao, a.nome_aluno, a.turma_aluno, a.data_inicio, a.data_validade, ar.numero AS armario_numero, ar.local AS armario_local
-        FROM alocacao a
-        JOIN armario ar ON a.armario_idArmario = ar.idArmario
-        WHERE a.armario_idarmario = ?
+    const sqlAtualizarStatus = `
+        UPDATE armario SET status = 'ocupado' WHERE idArmario = ?
     `;
     return new Promise((resolve, reject) => {
-        db.query(sql, [idArmario], (err, results) => {
+        db.beginTransaction((err) => {
             if (err) return reject(err);
-            resolve(results);
-        });
-    });
-};
 
-exports.desalocarArmario = async (id) => {
-    const sql = 'DELETE FROM alocacao WHERE idAlocacao = ?';
-    return new Promise((resolve, reject) => {
-        db.query(sql, [id], (err) => {
-            if (err) return reject(err);
-            resolve('Alocação removida com sucesso');
+            db.query(sqlAlocacao, [dataInicio, dataValidade, armarioId, nomeAluno, turmaAluno], (err) => {
+                if (err) {
+                    return db.rollback(() => {
+                        reject(err);
+                    });
+                }
+
+                db.query(sqlAtualizarStatus, [armarioId], (err) => {
+                    if (err) {
+                        return db.rollback(() => {
+                            reject(err);
+                        });
+                    }
+
+                    db.commit((err) => {
+                        if (err) {
+                            return db.rollback(() => {
+                                reject(err);
+                            });
+                        }
+                        resolve('Armário alocado com sucesso e status atualizado para ocupado');
+                    });
+                });
+            });
         });
     });
 };
