@@ -39,3 +39,40 @@ exports.alocarArmario = async (armarioId, dataInicio, dataValidade, nomeAluno, t
         });
     });
 };
+
+exports.desalocarArmario = async (id) => {
+    const sqlDesalocacao = 'DELETE FROM alocacao WHERE idAlocacao = ?';
+    const sqlAtualizarStatus = `
+        UPDATE armario SET status = 'disponível' WHERE idArmario = ?
+    `;
+    return new Promise((resolve, reject) => {
+        db.beginTransaction((err) => {
+            if (err) return reject(err);
+
+            db.query(sqlAtualizarStatus, [id], (err) => {
+                if (err) {
+                    return db.rollback(() => {
+                        reject(err);
+                    });
+                }
+
+                db.query(sqlDesalocacao, [id], (err) => {
+                    if (err) {
+                        return db.rollback(() => {
+                            reject(err);
+                        });
+                    }
+
+                    db.commit((err) => {
+                        if (err) {
+                            return db.rollback(() => {
+                                reject(err);
+                            });
+                        }
+                        resolve('Alocação removida com sucesso e status do armário atualizado para disponível');
+                    });
+                });
+            });
+        });
+    });
+};
