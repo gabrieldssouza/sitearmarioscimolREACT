@@ -1,0 +1,294 @@
+/* Container Principal */
+.locker-grid-container {
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
+  background-color: #1a1d2e;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  background-color: #242738;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #343849;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header .logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.header .logo h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header .login-button {
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.header .login-button:hover {
+  background-color: #357abd;
+}
+
+/* Main Content */
+.main-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Header Content */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-content .title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.header-content .back-button {
+  background-color: #343849;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.header-content .back-button:hover {
+  background-color: #4a90e2;
+}
+
+/* Lockers Section */
+.lockers-section {
+  background-color: #2a2e43;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.lockers-section .section-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.lockers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  gap: 10px;
+}
+
+/* Locker Buttons */
+.locker {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.locker:hover {
+  transform: scale(1.1);
+}
+
+.locker.available {
+  background-color: #27ae60;
+}
+
+.locker.occupied {
+  background-color: #2980b9;
+}
+
+.locker.expiring {
+  background-color: #f1c40f;
+  color: #000;
+}
+
+.locker.overdue {
+  background-color: #e74c3c;
+}
+
+.locker.add-locker {
+  background-color: #343849;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.locker.add-locker:hover {
+  background-color: #4a90e2;
+}
+
+/* Details Section */
+.details-section {
+  background-color: #2a2e43;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.details-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.locker-details p {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+.input-field,
+.dropdown {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #343849;
+  border-radius: 8px;
+  background-color: #1a1d2e;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.input-field:focus,
+.dropdown:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.status-badge.available {
+  background-color: #27ae60;
+}
+
+.status-badge.occupied {
+  background-color: #2980b9;
+}
+
+.status-badge.expiring {
+  background-color: #f1c40f;
+  color: #000;
+}
+
+.status-badge.overdue {
+  background-color: #e74c3c;
+}
+
+/* Details Actions */
+.details-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.edit-button,
+.save-button {
+  padding: 10px 20px;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.edit-button:hover,
+.save-button:hover {
+  background-color: #357abd;
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  padding: 10px 20px;
+  background-color: #242738;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.legend {
+  display: flex;
+  gap: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-color {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.legend-color.available {
+  background-color: #27ae60;
+}
+
+.legend-color.occupied {
+  background-color: #e74c3c;
+}
+
+.legend-color.expiring {
+  background-color: #f1c40f;
+}
+
+.locker:hover {
+  opacity: 0.8;
+}
+
+.bg-red-500 {
+  background-color: #ef4444;
+}
+
+.bg-green-500 {
+  background-color: #10b981;
+}
+
+.bg-yellow-500 {
+  background-color: #f59e0b;
+}
+
+.bg-orange-500 {
+  background-color: #fb923c;
+}
+
+.bg-gray-500 {
+  background-color: #6b7280;
+}

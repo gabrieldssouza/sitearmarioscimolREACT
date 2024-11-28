@@ -1,20 +1,50 @@
 {
-  "name": "apiarmariosnodejs",
+  "name": "locker-management-system",
   "version": "1.0.0",
-  "description": "sistema para os armários do cimol",
+  "description": "Sistema para os armários do CIMOL",
+  "private": true,
   "main": "index.js",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
     "start": "node ./bin/server.js",
+    "lint": "next lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@radix-ui/react-avatar": "^1.0.3",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-popover": "^1.0.6",
+    "@radix-ui/react-select": "^1.2.2",
+    "@radix-ui/react-slot": "^1.0.2",
     "bcrypt": "^5.1.1",
+    "class-variance-authority": "^0.6.0",
+    "clsx": "^1.2.1",
     "cors": "^2.8.5",
+    "date-fns": "^2.30.0",
     "express": "^4.21.0",
     "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.252.0",
     "mysql2": "^3.11.3",
-    "nodemon": "^3.1.7"
+    "next": "13.4.7",
+    "nodemon": "^3.1.7",
+    "react": "18.2.0",
+    "react-day-picker": "^8.8.0",
+    "react-dom": "18.2.0",
+    "tailwind-merge": "^1.13.2",
+    "tailwindcss-animate": "^1.0.6"
+  },
+  "devDependencies": {
+    "@types/node": "20.3.3",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "autoprefixer": "10.4.14",
+    "eslint": "8.44.0",
+    "eslint-config-next": "13.4.7",
+    "postcss": "8.4.24",
+    "tailwindcss": "3.3.2",
+    "typescript": "5.1.6"
   }
 }
