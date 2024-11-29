@@ -41,7 +41,7 @@ exports.alocarArmario = async (armarioId, dataInicio, dataValidade, nomeAluno, t
 };
 
 exports.desalocarArmario = async (id) => {
-    const sqlDesalocacao = 'DELETE FROM alocacao WHERE idAlocacao = ?';
+    const sqlDesalocacao = 'DELETE FROM alocacao WHERE armario_idarmario = ?';
     const sqlAtualizarStatus = `
         UPDATE armario SET status = 'disponível' WHERE idArmario = ?
     `;
