@@ -32,4 +32,7 @@ app.use('/alocar', router.post('/alocar', alocacaoController.alocarArmario));
 app.use('/alocacao/id/:idArmario', router.get('/alocacao/id/:idArmario', alocacaoController.buscarAlocacoesPorAluno));
 app.use('/alocacao/:id', router.delete('/alocacao/:id', alocacaoController.desalocarArmario));
 
+app.use('/editarLocacao', router.put('/editarLocacao', alocacaoController.editarLocacaoController))
+
+
 module.exports = app;

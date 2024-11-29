@@ -75,4 +75,26 @@ exports.desalocarArmario = async (id) => {
             });
         });
     });
+
 };
+
+exports.buscarAlocacoesPorAluno = async (idArmario) => {
+    const sql = `SELECT * FROM alocacao WHERE armario_idarmario = ?`;
+    return new Promise((resolve, reject) => {
+        db.query(sql, [idArmario], (err, results) => {
+            if (err) return reject(err);
+            resolve(results[0]);
+        });
+    });
+};
+
+exports.editarLocacao = async (armarioId, nomeAluno, turmaAluno, dataInicio, dataValidade) => {
+    const sql = 'UPDATE alocacao SET nome_aluno = ?, turma_aluno = ?, data_inicio = ?, data_validade = ? WHERE armario_idarmario = ?';
+    return new Promise((resolve, reject) => {
+        db.query(sql, [nomeAluno, turmaAluno, dataInicio, dataValidade, armarioId,], (err) => {
+            if (err) return reject(err);
+            resolve('Locação editado com sucesso');
+        });
+    });
+};
+
