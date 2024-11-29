@@ -21,13 +21,14 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
   const [selectedLocker, setSelectedLocker] = useState<Locker | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState<Locker | null>(null);
-  const [lockerDetails, setLockerDetails] = useState<Locker | null>(null); // Para armazenar os dados do armário
+  const [lockerDetails, setLockerDetails] = useState<Locker | null>(null); 
   const router = useRouter();
 
-
-  const formatDate = (dateString: string) => {
+  
+  const formatDate = (dateString: string | null | undefined) => {
+    if (!dateString) return 'Nenhuma data atribuída';
     const date = new Date(dateString);
-    return date.toLocaleDateString('pt-BR'); // Isso formata a data no formato dd/mm/yyyy
+    return isNaN(date.getTime()) ? 'Nenhuma data atribuída' : date.toLocaleDateString('pt-BR');
   };
 
   const [dataInicioFormatada, setDataInicioFormatada] = useState('');
@@ -40,46 +41,75 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
       const data = response.data;
   
       // Verifica se a data de validade já passou e atualiza o status
-      const status = checkStatus(data.data_validade);
-      if (status) {
-        data.status = status; // Atualiza o status para "expirado" ou "atrasado"
-      }
   
       setLockerDetails(data);
       setDataInicioFormatada(formatDate(data.data_inicio));
       setDataValidadeFormatada(formatDate(data.data_validade));
-      console.log('armário de lugar', data); // Atualiza os dados do armário
+      console.log('armário de lugar', data); 
     } catch (error) {
       console.error(error);
     }
   };
   
+const [statusData, setStatusData] = useState([]);
 
-  const checkStatus = (dataValidade: string) => {
-    const validadeDate = new Date(dataValidade);
-    const currentDate = new Date();
-  
-    // Verifica se a data de validade já passou
-    if (validadeDate < currentDate) {
-      return 'atrasado'; // ou 'expirado', dependendo de como você quer chamar
+const checkStatus = async (id, arma) => {
+  console.log("Entrou na função checkStatus, ID:", id);
+  try {
+   
+    const response = await axios.get(`http://localhost:3001/alocacao/id/${id}`);
+    const statusData = response.data; 
+
+    if (!statusData?.data_validade) {
+      console.warn("Data de validade ausente nos dados retornados:", statusData);
+      return '';
     }
-  
-    return ''; // Se não, retorna vazio ou outro status
+    const validadeDate = new Date(statusData.data_validade);
+    console.log("Data de validade:", validadeDate);
+    const currentDate = new Date();
+    if (validadeDate < currentDate) {
+      console.log("Data expirou, retornando 'expirado'");
+      editStatus(statusData, arma);
+      return 'expirado';
+    }
+    return ''; // Caso contrário, retorna vazio ou outro status
+  } catch (error) {
+    console.error("Erro ao checar status:", error);
+    return ''; // Retorna um valor padrão em caso de erro
+  }
+};
+
+const [statusDataMap, setStatusDataMap] = useState({}); // Map para status de cada armário
+
+useEffect(() => {
+  const fetchAllStatuses = async () => {
+    const updatedStatusMap = {};
+
+    for (const arma of lockersData) {
+      const status = await checkStatus(arma.idarmario, arma);
+      updatedStatusMap[arma.idarmario] = status || arma.status; // Atualiza com status calculado ou o original
+    }
+
+    setStatusDataMap(updatedStatusMap);
   };
+
+  fetchAllStatuses();
+}, [lockersData]); // Atualiza quando os dados dos armários mudarem
+
   
 
   const getStatusColor = (status) => {
     switch (status) {
       case 'ocupado':
-        return 'bg-red-500 hover:bg-red-600';  // Vermelho para ocupado
+        return 'bg-red-500 hover:bg-red-600';  
       case 'disponível':
-        return 'bg-green-500 hover:bg-green-600';  // Verde para disponível
-      case 'expirando':
-        return 'bg-yellow-500 hover:bg-yellow-600';  // Amarelo para expirando
+        return 'bg-green-500 hover:bg-green-600';  
+      case 'expirado':
+        return 'bg-yellow-500 hover:bg-yellow-600';  
       case 'atrasado':
-        return 'bg-orange-500 hover:bg-orange-600';  // Laranja para atrasado
+        return 'bg-orange-500 hover:bg-orange-600'; 
       default:
-        return 'bg-gray-500 hover:bg-gray-600';  // Cor padrão caso o status não seja reconhecido
+        return 'bg-gray-500 hover:bg-gray-600';  
     }
   };
 
@@ -87,7 +117,7 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
     setSelectedLocker(locker);
     setEditData(locker);
     fetchLockerDetails(locker.idarmario);
-    setIsEditing(false); // Fecha a edição automaticamente ao selecionar outro armário
+    setIsEditing(false); 
     console.log('Armário selecionado:', locker.idarmario);
   };
 
@@ -121,8 +151,25 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
     } catch (error) {
       console.error('Erro ao editar bem:', error);
     }
+    window.location.reload();
   }
-
+ 
+  async function editStatus(data, arma) {
+    console.log("edit p2")
+    const newdata = {
+      idarmario: arma.idarmario,
+      numero: arma.numero,
+      status: "expirado",
+      local: arma.local,
+    };
+    console.log("editando edit p.5", newdata);
+    try {
+      const response = await axios.put('http://localhost:3001/editararmario/:id', newdata);
+      console.log('Bem editado com sucesso:', response.data);
+    } catch (error) {
+      console.error('Erro ao editar bem:', error);
+    }
+  }
   async function postAlocacao(data) {
     const newdata = {
       dataInicio: data.data_inicio,
@@ -138,6 +185,7 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
     } catch (error) {
       console.error('Erro ao criar bem:', error);
     }
+    window.location.reload();
   }
 
   const handleSave = () => {
@@ -163,13 +211,27 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
       setDataValidadeFormatada(formatDate(value));
     }
   };
+  
+
+  const handleDesalocar = async (id) => {
+    console.log("Desalocando armário:", id);
+    
+    try {
+      const response = await axios.delete(`http://localhost:3001/alocacao/${id}`);
+      console.log('Desalocado com sucesso:', response.data);   
+    } catch (error) {
+      console.error('Erro ao desalocar:', error);
+    }
+    window.location.reload();
+  };
+
 
   return (
     <div className="locker-grid-container">
       <header className="header">
         <div className="logo">
-          <img src="/logo.png" alt="CIMOL" />
-          <h1>CIMOL</h1>
+          <img src="https://infocimol.com.br/img/LogoCimolBranco.png" alt="CIMOL" />
+          <h1>ARMÁRIOS - INFORMÁTICA</h1>
         </div>
         <button className="login-button">Sair</button>
       </header>
@@ -189,8 +251,7 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
           <h2 className="section-title">Armários prédio {buildingId}</h2>
           <div className="lockers-grid">
   {lockersData.map((arma) => {
-    const status = checkStatus(arma.data_validade);
-    const finalStatus = status || arma.status;  // Se o status já foi atualizado para expirado, use-o, caso contrário, use o status original
+    const finalStatus = statusDataMap[arma.idarmario] || arma.status; // Usa o status atualizado ou original
 
     return (
       <button
@@ -214,7 +275,7 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
               {/* Exibir sempre as informações principais (número e status) */}
               <p>Armário do prédio: {buildingId}</p>
               <p>
-                Número: {lockerDetails ? lockerDetails.numero : selectedLocker?.numero}
+                Número: {selectedLocker?.numero}
               </p>
              <p>
   Status:{' '}
@@ -224,11 +285,9 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
       onChange={(e) => handleInputChange('status', e.target.value)}
       className="dropdown"
     >
-      <option value="available">Livre</option>
+      <option value="available">Disponível</option>
       <option value="occupied">Ocupado</option>
-      <option value="expiring">Expirando</option>
-      <option value="overdue">Atrasado</option>
-      <option value="expired">Expirado</option>  {/* Nova opção "Expirado" */}
+       {/* Nova opção "Expirado" */}
     </select>
   ) : (
     <span className={`status-badge ${getStatusColor(editData?.status || '')}`}>
@@ -247,7 +306,7 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
                     value={editData?.nome_aluno || ''}
                     onChange={(e) => handleInputChange('nome_aluno', e.target.value)}
                     className="input-field"
-                    placeholder="Digite o nome do aluno"
+                    placeholder={lockerDetails?.nome_aluno || "Digite o nome do aluno"}
                   />
                 ) : (
                   lockerDetails?.nome_aluno || 'Nenhum aluno atribuído'
@@ -262,7 +321,7 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
                     value={editData?.turma_aluno || ''}
                     onChange={(e) => handleInputChange('turma_aluno', e.target.value)}
                     className="input-field"
-                    placeholder="Digite a turma"
+                    placeholder={ lockerDetails?.turma_aluno || "Digite a turma"}
                   />
                 ) : (
                   lockerDetails?.turma_aluno || 'Sem turma atribuída'
@@ -279,7 +338,7 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
                     className="input-field"
                   />
                 ) : (
-                  dataInicioFormatada || 'Nenhuma data atribuída'
+                 formatDate(lockerDetails?.data_inicio) || 'Nenhuma data atribuída'
                 )}
               </p>
 
@@ -293,7 +352,7 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
                     className="input-field"
                   />
                 ) : (
-                  dataValidadeFormatada || 'Sem validade definida'
+                  formatDate(lockerDetails?.data_validade) || 'Sem validade definida'
                 )}
               </p>
             </div>
@@ -308,9 +367,15 @@ export default function LockerGrid({ buildingId, floor, lockersData }) {
                   </button>
                 </>
               ) : (
+                <div> 
                 <button className="edit-button" onClick={handleEditToggle}>
                   Editar
                 </button>
+                <button className="edit-button" onClick={() => handleDesalocar(selectedLocker.idarmario)}>
+                  Desalocar
+                </button>
+
+                </div>
               )}
             </div>
           </div>

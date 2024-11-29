@@ -1,5 +1,11 @@
 {
   "pages": {
+    "/lockers/[buildingId]/[floor]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/lockers/[buildingId]/[floor]/page.css",
+      "static/chunks/app/lockers/[buildingId]/[floor]/page.js"
+    ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -17,12 +23,6 @@
       "static/chunks/main-app.js",
       "static/css/app/buildings/page.css",
       "static/chunks/app/buildings/page.js"
-    ],
-    "/lockers/[buildingId]/[floor]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/lockers/[buildingId]/[floor]/page.css",
-      "static/chunks/app/lockers/[buildingId]/[floor]/page.js"
     ]
   }
 }
