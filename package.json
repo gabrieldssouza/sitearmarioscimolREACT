@@ -1,10 +1,15 @@
 {
-  "name": "apiarmariosnodejs",
+  "name": "locker-management-system",
   "version": "1.0.0",
-  "description": "sistema para os armários do cimol",
+  "description": "Sistema para os armários do CIMOL",
+  "private": true,
   "main": "index.js",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
     "start": "node ./bin/server.js",
+    "lint": "next lint",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
