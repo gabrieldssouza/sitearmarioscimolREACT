@@ -1,0 +1,338 @@
+{
+  "ssrModuleMapping": {
+    "(app-client)/./node_modules/next/dist/client/components/app-router.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/app-router.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/error-boundary.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/error-boundary.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/redirect-boundary.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/redirect-boundary.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/router-reducer/fetch-server-response.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/router-reducer/fetch-server-response.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/layout-router.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/layout-router.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/render-from-template-context.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./app/page.tsx": {
+      "*": {
+        "id": "(sc_client)/./app/page.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./components/login-form.tsx": {
+      "*": {
+        "id": "(sc_client)/./components/login-form.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./components/building-selector.tsx": {
+      "*": {
+        "id": "(sc_client)/./components/building-selector.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./app/lockers/[buildingId]/[floor]/page.tsx": {
+      "*": {
+        "id": "(sc_client)/./app/lockers/[buildingId]/[floor]/page.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./components/locker-grid.tsx": {
+      "*": {
+        "id": "(sc_client)/./components/locker-grid.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    }
+  },
+  "edgeSSRModuleMapping": {},
+  "clientModules": {
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\client\\components\\app-router.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/app-router.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\esm\\client\\components\\app-router.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/app-router.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\client\\components\\error-boundary.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/error-boundary.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\esm\\client\\components\\error-boundary.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/error-boundary.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\client\\components\\redirect-boundary.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/redirect-boundary.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\esm\\client\\components\\redirect-boundary.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/redirect-boundary.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\client\\components\\router-reducer\\fetch-server-response.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/router-reducer/fetch-server-response.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\esm\\client\\components\\router-reducer\\fetch-server-response.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/router-reducer/fetch-server-response.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\shared\\lib\\app-router-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/app-router-context.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\esm\\shared\\lib\\app-router-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/app-router-context.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\shared\\lib\\hooks-client-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/hooks-client-context.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\esm\\shared\\lib\\hooks-client-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/hooks-client-context.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\shared\\lib\\server-inserted-html.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/server-inserted-html.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\esm\\shared\\lib\\server-inserted-html.js": {
+      "id": "(app-client)/./node_modules/next/dist/shared/lib/server-inserted-html.js",
+      "name": "*",
+      "chunks": [
+        "webpack:static/chunks/webpack.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\client\\components\\layout-router.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/layout-router.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\esm\\client\\components\\layout-router.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/layout-router.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\client\\components\\render-from-template-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\esm\\client\\components\\render-from-template-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\client\\components\\static-generation-searchparams-bailout-provider.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\dist\\esm\\client\\components\\static-generation-searchparams-bailout-provider.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\app\\page.tsx": {
+      "id": "(app-client)/./app/page.tsx",
+      "name": "*",
+      "chunks": [
+        "app/page:static/chunks/app/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\components\\login-form.tsx": {
+      "id": "(app-client)/./components/login-form.tsx",
+      "name": "*",
+      "chunks": [
+        "app/page:static/chunks/app/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\components\\building-selector.tsx": {
+      "id": "(app-client)/./components/building-selector.tsx",
+      "name": "*",
+      "chunks": [
+        "app/buildings/page:static/chunks/app/buildings/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\app\\lockers\\[buildingId]\\[floor]\\page.tsx": {
+      "id": "(app-client)/./app/lockers/[buildingId]/[floor]/page.tsx",
+      "name": "*",
+      "chunks": [
+        "app/lockers/[buildingId]/[floor]/page:static/chunks/app/lockers/[buildingId]/[floor]/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\components\\locker-grid.tsx": {
+      "id": "(app-client)/./components/locker-grid.tsx",
+      "name": "*",
+      "chunks": [
+        "app/lockers/[buildingId]/[floor]/page:static/chunks/app/lockers/[buildingId]/[floor]/page.js"
+      ],
+      "async": false
+    }
+  },
+  "entryCSSFiles": {
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\app\\page": {
+      "modules": [
+        "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\components\\login.css"
+      ],
+      "files": [
+        "static/css/app/page.css"
+      ]
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\app\\layout": {
+      "modules": [
+        "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\app\\css\\global.css",
+        "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\node_modules\\next\\font\\google\\target.css?{\"path\":\"app\\\\layout.tsx\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}"
+      ],
+      "files": [
+        "static/css/app/layout.css"
+      ]
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\app\\buildings\\page": {
+      "modules": [
+        "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\components\\selector.css"
+      ],
+      "files": [
+        "static/css/app/buildings/page.css"
+      ]
+    },
+    "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\app\\lockers\\[buildingId]\\[floor]\\page": {
+      "modules": [
+        "C:\\Users\\Amanda Fleck\\Desktop\\codes\\apiarmariosNODEJS\\src\\View\\components\\dadosGrid.css"
+      ],
+      "files": [
+        "static/css/app/lockers/[buildingId]/[floor]/page.css"
+      ]
+    }
+  }
+}

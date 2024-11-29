@@ -31,4 +31,21 @@ exports.desalocarArmario = async (req, res) => {
         res.status(500).send('Erro ao desalocar armário');
         console.error(err);
     }
+
+};
+
+exports.editarLocacaoController = async (req, res) => {
+    const { armarioId, nomeAluno, turmaAluno, dataInicio, dataValidade } = req.body; 
+
+    if (!armarioId || !nomeAluno || !turmaAluno || !dataInicio || !dataValidade) {
+        res.status(400).json({ error: 'Todos os campos são obrigatórios' });
+    }
+    try {
+        const result = await alocacaoModel.editarLocacao(armarioId, nomeAluno, turmaAluno, dataInicio, dataValidade);
+        res.status(200).send(result);
+    } catch (err) {
+        res.status(500).send('Erro na edição do armário');
+        console.error(err); 
+    }
+
 };
