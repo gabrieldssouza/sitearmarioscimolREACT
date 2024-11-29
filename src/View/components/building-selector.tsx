@@ -30,7 +30,7 @@ export default function BuildingSelector() {
       </header>
       <div className="content">
         <h2 className="title">ARMÁRIOS</h2>
-        <p className="subtitle">Bem vindo, ciclano! Selecione o Prédio e andar que deseja ver!</p>
+        <p className="subtitle">Bem vindo! Selecione o Prédio e andar que deseja ver!</p>
         <div className="grid">
           {buildings.map((building) => (
             <div key={building.id} className="card">
